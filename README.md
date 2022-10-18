@@ -83,7 +83,7 @@ admin pass: test1234
 default port: 5432
 
 ## ✍️ Autores <a name = "authors"></a>
-- [@mily96](ttps://github.com/mily96)
+- [@mily96](https://github.com/mily96)
 - [@andresbiso](https://github.com/andresbiso)
 
 ## 🎉 Reconocimientos <a name = "acknowledgement"></a>
