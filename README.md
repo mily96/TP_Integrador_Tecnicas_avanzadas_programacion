@@ -5,18 +5,18 @@
     <br>
 </p>
 
-## 📝 Table of Contents
+# 📝 Table of Contents
 - [Acerca De](#about)
 - [Herramientas Utilizadas](#built_using)
 - [Autores](#authors)
 - [Reconocimientos](#acknowledgement)
 
-## ℹ Acerca De <a name = "about"></a>
+# ℹ Acerca De <a name = "about"></a>
 - Repositorio que contiene el trabajo práctico de la materia Técnicas Avanzadas de Programación de la Universidad de Palermo.
 
-## ⛏️ Herramientas Utilizadas <a name = "built_using"></a>
+# ⛏️ Herramientas Utilizadas <a name = "built_using"></a>
 
-### Herramientas
+## Herramientas
 Recomendamos utilizar [chocolatey](https://community.chocolatey.org/) para instalar estos paquetes:
 - [vscode](https://community.chocolatey.org/packages/vscode)
 - [Python3](https://community.chocolatey.org/packages/python3/3.10.8) -> v3.10.8
@@ -27,7 +27,7 @@ Recomendamos utilizar [chocolatey](https://community.chocolatey.org/) para insta
 ```
 - [pgadmin4](https://community.chocolatey.org/packages/pgadmin4) -> v6.14
 
-### Paquetes npm
+## Paquetes npm
 Recomendamos utilizar la versión de npm que viene incluído en la versión de nodejs LTS (v16.18.0) para instalar los siguientes paquetes:
 - [@angular/cli](https://www.npmjs.com/package/@angular/cli) -> v13-lts (tag)
 ```
@@ -46,7 +46,7 @@ npm install -g sass@1.55.0
 npm install
 ```
 
-### Paquetes pip
+## Paquetes pip
 Recomendamos utilizar la versión de pip que viene incluído en la versión de python3 (v3.10.8) para instalar los siguientes paquetes:
 - [djangorestframework](https://pypi.org/project/djangorestframework/)
 ```
@@ -77,14 +77,19 @@ pip install -Iv coverage==6.5.0
 pip install -Iv drf-yasg==1.21.4
 ```
 
-### Postgresql
-admin: postgres 
-admin pass: test1234
-default port: 5432
+## Postgresql
+- default port: 5432
 
-## ✍️ Autores <a name = "authors"></a>
+### Login
+- admin: postgres 
+- admin pass: test1234
+```
+psql -U postgres
+```
+
+# ✍️ Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
 - [@andresbiso](https://github.com/andresbiso)
 
-## 🎉 Reconocimientos <a name = "acknowledgement"></a>
+# 🎉 Reconocimientos <a name = "acknowledgement"></a>
 - https://github.com/github/gitignore
