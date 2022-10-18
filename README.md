@@ -25,7 +25,7 @@ Recomendamos utilizar [chocolatey](https://community.chocolatey.org/) para insta
 ```
 --params '/Password:test1234'
 ```
-- [pgadmin4](https://community.chocolatey.org/packages/pgadmin4) -> v6.14
+- [pgadmin4](https://community.chocolatey.org/packages/pgadmin4) -> v6.13
 
 ## Paquetes npm
 Recomendamos utilizar la versión de npm que viene incluído en la versión de nodejs LTS (v16.18.0) para instalar los siguientes paquetes:
