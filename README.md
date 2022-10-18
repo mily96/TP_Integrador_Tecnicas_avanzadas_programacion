@@ -78,14 +78,17 @@ pip install -Iv drf-yasg==1.21.4
 ```
 
 ## Postgresql
-- default port: 5432
+- Default Port: 5432
 
 ### Login
-- admin: postgres 
-- admin pass: test1234
+- Admin: postgres 
+- Admin Pass: test1234
 ```
 psql -U postgres
 ```
+
+### pgAdmin4
+- Master Password: test1234
 
 # ✍️ Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
