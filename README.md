@@ -52,13 +52,13 @@ Recomendamos utilizar la versión de pip que viene incluído en la versión de p
 ```
 pip install -Iv djangorestframework==3.14.0
 ```
-- [markdown](https://pypi.org/project/Markdown/)
+- [django-cors-headers](https://pypi.org/project/django-cors-headers/)
 ```
-pip install -Iv markdownr==3.4.1 # Markdown support for the browsable API.
+pip install -Iv django-cors-headers==3.13.0
 ```
-- [django-filter](https://pypi.org/project/Markdown/)
+- [requests](https://pypi.org/project/requests/)
 ```
-pip install -Iv django-filter==1.2.2 # Filtering support
+pip install -Iv requests==2.28.1
 ```
 - [SQLAlchemy](https://pypi.org/project/SQLAlchemy/)
 ```
@@ -75,6 +75,17 @@ pip install -Iv coverage==6.5.0
 - [drf-yasg](https://pypi.org/project/drf-yasg/)
 ```
 pip install -Iv drf-yasg==1.21.4
+```
+
+### pip comandos
+- Extraer paquetes instalados:
+```
+python -m pip freeze > requirements.txt
+```
+- Instalar paquetes desde archivo:
+```
+python -m venv tadp-venv
+python -m pip install -r requirements.txt
 ```
 
 ## Postgresql
