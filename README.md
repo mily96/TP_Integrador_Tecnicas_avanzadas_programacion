@@ -5,16 +5,49 @@
     <br>
 </p>
 
-# 📝 Table of Contents
+# :pencil: Table of Contents
 - [Acerca De](#about)
+- [Levantar Proyecto](#run_project)
 - [Herramientas Utilizadas](#built_using)
 - [Autores](#authors)
 - [Reconocimientos](#acknowledgement)
 
-# ℹ Acerca De <a name = "about"></a>
+# :information_source: Acerca De <a name = "about"></a>
 - Repositorio que contiene el trabajo práctico de la materia Técnicas Avanzadas de Programación de la Universidad de Palermo.
 
-# ⛏️ Herramientas Utilizadas <a name = "built_using"></a>
+# :wrench: Levantar Proyecto <a name = "run_project"></a>
+
+## Server
+1. Ver "Instalar paquetes de requirements.txt" en este mismo archivo.
+2. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+3. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
+```
+tadp-venv\Scripts\activate
+cd tadp_api
+./manage.py runserver
+```
+4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/api/v1/questions/)
+
+## Crear o Cambiar Password de Usuario Admin Django
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
+```
+tadp-venv\Scripts\activate
+cd tadp_api
+```
+3. 
+```
+./manage.py migrate
+```
+4. 
+```
+./manage.py createsuperuser
+```
+- Recomendamos utilizar:
+    - User: admin 
+    - Pass: test1234
+
+# :hammer: Herramientas Utilizadas <a name = "built_using"></a>
 
 ## Herramientas
 Recomendamos utilizar [chocolatey](https://community.chocolatey.org/) para instalar estos paquetes:
@@ -78,14 +111,14 @@ pip install -Iv drf-yasg==1.21.4
 ```
 
 ### pip comandos
-- Extraer paquetes instalados:
-```
-python -m pip freeze > requirements.txt
-```
-- Instalar paquetes desde archivo:
+- Instalar paquetes de requirements.txt:
 ```
 python -m venv tadp-venv
 python -m pip install -r requirements.txt
+```
+- Extraer paquetes instalados a requirements.txt:
+```
+python -m pip freeze > requirements.txt
 ```
 
 ## Postgresql
@@ -101,9 +134,10 @@ psql -U postgres
 ### pgAdmin4
 - Master Password: test1234
 
-# ✍️ Autores <a name = "authors"></a>
+# :speech_balloon: Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
 - [@andresbiso](https://github.com/andresbiso)
 
-# 🎉 Reconocimientos <a name = "acknowledgement"></a>
+# :tada: Reconocimientos <a name = "acknowledgement"></a>
 - https://github.com/github/gitignore
+- https://gist.github.com/rxaviers/7360908 -> github emojis
