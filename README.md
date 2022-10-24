@@ -28,6 +28,11 @@ cd tadp_api
 ```
 4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/api/v1/questions/)
 
+- En caso de que ya estemos utilizando otro ambiente de python podemos correr el siguiente comando para desactivarlo:
+```
+deactivate
+```
+
 ## Crear o Cambiar Password de Usuario Admin Django
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
 2. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
@@ -50,15 +55,27 @@ cd tadp_api
 # :hammer: Herramientas Utilizadas <a name = "built_using"></a>
 
 ## Herramientas
-Recomendamos utilizar [chocolatey](https://community.chocolatey.org/) para instalar estos paquetes:
+Recomendamos utilizar [chocolatey](https://chocolatey.org/install) para instalar estos paquetes:
 - [vscode](https://community.chocolatey.org/packages/vscode)
+```
+choco install vscode
+```
 - [Python3](https://community.chocolatey.org/packages/python3/3.10.8) -> v3.10.8
+```
+choco install python3 --version 3.10.8
+```
 - [nodejs-lts](https://community.chocolatey.org/packages/nodejs-lts) -> v16.18.0
+```
+choco install nodejs-lts --version 16.18.0
+```
 - [postgresql](https://community.chocolatey.org/packages/postgresql14) -> v14.5.1
 ```
---params '/Password:test1234'
+choco install postgresql14 --version 14.5.1 --params '/Password:test1234'
 ```
 - [pgadmin4](https://community.chocolatey.org/packages/pgadmin4) -> v6.13
+```
+choco install pgadmin4 --version 6.13.0
+```
 
 ## Paquetes npm
 Recomendamos utilizar la versión de npm que viene incluído en la versión de nodejs LTS (v16.18.0) para instalar los siguientes paquetes:
@@ -114,7 +131,12 @@ pip install -Iv drf-yasg==1.21.4
 - Instalar paquetes de requirements.txt:
 ```
 python -m venv tadp-venv
+tadp-venv\Scripts\activate
 python -m pip install -r requirements.txt
+```
+- Desinstalar paquetes de requirements.txt:
+```
+pip uninstall -r requirements.txt -y
 ```
 - Extraer paquetes instalados a requirements.txt:
 ```
