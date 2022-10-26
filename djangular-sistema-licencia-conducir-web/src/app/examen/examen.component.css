@@ -1,0 +1,19 @@
+#question-container {
+    padding: 20px;
+  }
+
+.question-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+ 
+.question-radio-button {
+    margin: 5px;
+  }
+
+#question-header {
+    display: flex;
+    justify-content: space-between;
+}
