@@ -1,27 +1,84 @@
-# DjangularSistemaLicenciaConducirWeb
+<p align="center">
+    Trabajo Práctico Integrador - TADP - UP
+    <br>
+    2C - 2022
+    <br>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
+# :pencil: Table of Contents
+- [Acerca De](#about)
+- [Levantar Proyecto](#run_project)
+- [Herramientas Utilizadas](#built_using)
+- [Autores](#authors)
+- [Reconocimientos](#acknowledgement)
 
-## Development server
+# :information_source: Acerca De <a name = "about"></a>
+- Repositorio que contiene el trabajo práctico de la materia Técnicas Avanzadas de Programación de la Universidad de Palermo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# :wrench: Levantar Proyecto <a name = "run_project"></a>
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta **djangular-sistema-licencia-conducir-web** que contiene el proyecto de Angular
+3. Levantar el servidor a través del siguiente comando: **ng serve --open**
+4. Finalmente, se abrirá una nueva ventana en el navegador con la dirección **http://localhost:4200/** y podremos acceder a la interfaz de nuestro sistema
 
-## Code scaffolding
+# :hammer: Herramientas Utilizadas <a name = "built_using"></a>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Herramientas
+Recomendamos utilizar [chocolatey](https://chocolatey.org/install) para instalar estos paquetes:
+- [vscode](https://community.chocolatey.org/packages/vscode)
+```
+choco install vscode
+```
+- [Python3](https://community.chocolatey.org/packages/python3/3.10.8) -> v3.10.8
+```
+choco install python3 --version 3.10.8
+```
+- [nodejs-lts](https://community.chocolatey.org/packages/nodejs-lts) -> v16.18.0
+```
+choco install nodejs-lts --version 16.18.0
+```
+- [postgresql](https://community.chocolatey.org/packages/postgresql14) -> v14.5.1
+```
+choco install postgresql14 --version 14.5.1 --params '/Password:test1234'
+```
+- [pgadmin4](https://community.chocolatey.org/packages/pgadmin4) -> v6.13
+```
+choco install pgadmin4 --version 6.13.0
+```
 
-## Build
+## Paquetes npm
+Recomendamos utilizar la versión de npm que viene incluído en la versión de nodejs LTS (v16.18.0) para instalar los siguientes paquetes:
+- [@angular/cli](https://www.npmjs.com/package/@angular/cli) -> v13-lts (tag)
+```
+npm install -g @angular/cli@v13-lts
+```
+- [typescript](https://www.npmjs.com/package/typescript) -> v4.8.4
+```
+npm install -g typescript@4.8.4
+```
+- [sass](https://www.npmjs.com/package/sass) -> v1.55.0
+```
+npm install -g sass@1.55.0
+```
+- El resto de los paquetes utilizados se encuentran en el archivo package.json y pueden ser instalados localmente al proyecto con el comando:
+```
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Postgresql
+- Default Port: 5432
 
-## Running unit tests
+### Login
+- Admin: postgres 
+- Admin Pass: test1234
+```
+psql -U postgres
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### pgAdmin4
+- Master Password: test1234
 
-## Running end-to-end tests
+# :speech_balloon: Autores <a name = "authors"></a>
+- [@mily96](https://github.com/mily96)
+- [@andresbiso](https://github.com/andresbiso)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
