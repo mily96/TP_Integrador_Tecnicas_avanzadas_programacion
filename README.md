@@ -9,6 +9,7 @@
 - [Acerca De](#about)
 - [Levantar Proyecto](#run_project)
 - [Herramientas Utilizadas](#built_using)
+- [Otros Comentarios](#comments)
 - [Autores](#authors)
 - [Reconocimientos](#acknowledgement)
 
@@ -33,24 +34,12 @@ cd tadp_api
 deactivate
 ```
 
-## Crear o Cambiar Password de Usuario Admin Django
+## Cliente
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-2. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
-```
-tadp-venv\Scripts\activate
-cd tadp_api
-```
-3. 
-```
-./manage.py migrate
-```
-4. 
-```
-./manage.py createsuperuser
-```
-- Recomendamos utilizar:
-    - User: admin 
-    - Pass: test1234
+2. Dirigirse a la carpeta **client/djangular-sistema-licencia-conducir-web** que contiene el proyecto de Angular
+3. Instalar los paquete corriendo el comando: ```npm install```
+4. Levantar el servidor a través del siguiente comando: ```npm start```
+5. Finalmente, navegando a la dirección **http://localhost:4200/** podremos acceder a la interfaz de nuestro sistema
 
 # :hammer: Herramientas Utilizadas <a name = "built_using"></a>
 
@@ -155,6 +144,27 @@ psql -U postgres
 
 ### pgAdmin4
 - Master Password: test1234
+
+# :question: Otros Comentarios <a name = "comments"></a>
+
+## Crear o Cambiar Password de Usuario Admin Django
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
+```
+tadp-venv\Scripts\activate
+cd tadp_api
+```
+3. 
+```
+./manage.py migrate
+```
+4. 
+```
+./manage.py createsuperuser
+```
+- Recomendamos utilizar:
+    - User: admin 
+    - Pass: test1234
 
 # :speech_balloon: Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
