@@ -9,6 +9,7 @@
 - [Acerca De](#about)
 - [Levantar Proyecto](#run_project)
 - [Herramientas Utilizadas](#built_using)
+- [Probar API](#api_testing)
 - [Otros Comentarios](#comments)
 - [Autores](#authors)
 - [Reconocimientos](#acknowledgement)
@@ -144,6 +145,36 @@ psql -U postgres
 
 ### pgAdmin4
 - Master Password: test1234
+
+# :telescope: Probar API <a name = "test_api"></a>
+- Elegimos utilizar [Insomnia](https://github.com/Kong/insomnia) para probar nuestra API.
+
+Recomendamos utilizar [scoop](https://scoop.sh/) para instalar estos paquetes:
+- [insomnia](https://github.com/ScoopInstaller/Extras/blob/master/bucket/insomnia.json)
+- Primero agregarmos el bucket "extras" y luego instalamos el paquete
+```
+scoop bucket add extras
+scoop install insomnia
+```
+
+## Importar Test API
+1. Ir a Preferences (icono engranaje) e ir a la tab Data
+2. Seleccionar Import Data -> From File
+3. Elegir el archivo ubicado en:
+```
+insomnia/tp_integrador_test_api.json
+```
+
+## Exportar Test API
+- Si queremos exportar nuestros cambios a la Test Api
+1. Ir a Preferences (icono engranaje) e ir a la tab Data
+2. Seleccionar Export Data -> Export the "Insomnia" collection
+3. Seleccionar los request a exportar
+4. Elegir el formato: Insomnia v4 (JSON)
+5. Elegir el archivo ubicado en:
+```
+insomnia/tp_integrador_test_api.json
+```
 
 # :question: Otros Comentarios <a name = "comments"></a>
 
