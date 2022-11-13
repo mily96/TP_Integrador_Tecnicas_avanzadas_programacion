@@ -6,7 +6,7 @@ import { MatRadioChange } from "@angular/material/radio";
 @Component({
   selector: 'app-examen',
   templateUrl: './examen.component.html',
-  styleUrls: ['./examen.component.css']
+  styleUrls: ['./examen.component.scss']
 })
 export class ExamenComponent implements OnInit {
   examenData: QuestionArray = [];
