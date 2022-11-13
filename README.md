@@ -25,7 +25,7 @@
 ```
 tadp-venv\Scripts\activate
 cd tadp_api
-./manage.py runserver
+python manage.py runserver
 ```
 4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/api/v1/questions/)
 
@@ -121,7 +121,7 @@ pip install -Iv drf-yasg==1.21.4
 ```
 python -m venv tadp-venv
 tadp-venv\Scripts\activate
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 - Desinstalar paquetes de requirements.txt:
 ```
@@ -129,7 +129,7 @@ pip uninstall -r requirements.txt -y
 ```
 - Extraer paquetes instalados a requirements.txt:
 ```
-python -m pip freeze > requirements.txt
+pip freeze > requirements.txt
 ```
 
 ## Postgresql
