@@ -7,6 +7,14 @@
 DO
 $$
 BEGIN
+   IF EXISTS (SELECT 1 from INFORMATION_SCHEMA.Tables WHERE table_schema = 'tadp' AND  table_name = 'clave') THEN
+        DROP TABLE tadp.clave;
+   END IF;
+END $$;
+
+DO
+$$
+BEGIN
    IF EXISTS (SELECT 1 from INFORMATION_SCHEMA.Tables WHERE table_schema = 'tadp' AND  table_name = 'turno_revision') THEN
         DROP TABLE tadp.turno_revision;
    END IF;
@@ -62,10 +70,18 @@ CREATE TABLE tadp.turno_revision (
   fecha DATE NOT NULL
 );
 
+CREATE TABLE tadp.clave (
+  id_clave INT GENERATED ALWAYS AS IDENTITY,
+  valor TEXT NOT NULL,
+  fecha_creacion DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  es_valida BOOLEAN NOT NULL DEFAULT true
+);
+
 -- # PK
 ALTER TABLE tadp.usuario ADD PRIMARY KEY (id_usuario);
 ALTER TABLE tadp.turno_examen ADD PRIMARY KEY (id_turno_examen);
 ALTER TABLE tadp.turno_revision ADD PRIMARY KEY (id_turno_revision);
+ALTER TABLE tadp.clave ADD PRIMARY KEY (id_clave);
 
 -- # FK Constraint
 
@@ -85,6 +101,8 @@ INSERT INTO tadp.usuario(tipo, nombre_usuario, contrasenia) VALUES ('POSTULANTE'
 INSERT INTO tadp.turno_examen(id_usuario, fecha) VALUES (1, current_timestamp);
 
 INSERT INTO tadp.turno_revision(id_usuario, fecha) VALUES (1, current_timestamp);
+
+INSERT INTO tadp.clave(id_usuario, fecha) VALUES (1, current_timestamp);
 
 -- # After Changes Check 
 SELECT * FROM tadp.usuario;
