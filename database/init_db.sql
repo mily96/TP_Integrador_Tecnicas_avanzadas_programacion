@@ -3,11 +3,28 @@
 */
 
 -- # Delete tables
+
+DO
+$$
+BEGIN
+   IF EXISTS (SELECT 1 from INFORMATION_SCHEMA.Tables WHERE table_schema = 'tadp' AND  table_name = 'turno_revision') THEN
+        DROP TABLE tadp.turno_revision;
+   END IF;
+END $$;
+
+DO
+$$
+BEGIN
+   IF EXISTS (SELECT 1 from INFORMATION_SCHEMA.Tables WHERE table_schema = 'tadp' AND  table_name = 'turno_examen') THEN
+        DROP TABLE tadp.turno_examen;
+   END IF;
+END $$;
+
 DO
 $$
 BEGIN
    IF EXISTS (SELECT 1 from INFORMATION_SCHEMA.Tables WHERE table_schema = 'tadp' AND  table_name = 'usuario') THEN
-        DROP TABLE tadp.Usuario;
+        DROP TABLE tadp.usuario;
    END IF;
 END $$;
 
@@ -21,34 +38,53 @@ BEGIN
 END $$;
 
 -- # Create Schema
-CREATE SCHEMA IF NOT EXISTS tadp;
+CREATE SCHEMA tadp;
 
 -- # Create Tables
-CREATE TABLE tadp.Usuario (
-  idUsuario INT GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE tadp.usuario (
+  id_usuario INT GENERATED ALWAYS AS IDENTITY,
   tipo TEXT NOT NULL, -- POSTULANTE o ADMINISTRADOR
   habilitado boolean NOT NULL DEFAULT true,
   anteojos boolean NOT NULL DEFAULT false,
-  nombreUsuario TEXT NOT NULL,
+  nombre_usuario TEXT NOT NULL,
   contrasenia TEXT NOT NULL
 );
 
+CREATE TABLE tadp.turno_examen (
+  id_turno_examen INT GENERATED ALWAYS AS IDENTITY,
+  id_usuario INT NOT NULL,
+  fecha DATE NOT NULL
+);
+
+CREATE TABLE tadp.turno_revision (
+  id_turno_revision INT GENERATED ALWAYS AS IDENTITY,
+  id_usuario INT NOT NULL,
+  fecha DATE NOT NULL
+);
 
 -- # PK
-ALTER TABLE tadp.Usuario ADD PRIMARY KEY (idUsuario);
+ALTER TABLE tadp.usuario ADD PRIMARY KEY (id_usuario);
+ALTER TABLE tadp.turno_examen ADD PRIMARY KEY (id_turno_examen);
+ALTER TABLE tadp.turno_revision ADD PRIMARY KEY (id_turno_revision);
 
 -- # FK Constraint
 
--- # Constraint
+ALTER TABLE tadp.turno_examen 
+ADD CONSTRAINT fk_turno_examen_usuario 
+FOREIGN KEY (id_usuario) 
+REFERENCES tadp.usuario (id_usuario);
 
-
--- ALTER TABLE child_table 
--- ADD CONSTRAINT constraint_name 
--- FOREIGN KEY (fk_columns) 
--- REFERENCES parent_table (parent_key_columns);
+ALTER TABLE tadp.turno_revision
+ADD CONSTRAINT fk_turno_revision_usuario 
+FOREIGN KEY (id_usuario) 
+REFERENCES tadp.usuario (id_usuario);
 
 -- # Insert Test Values
-INSERT INTO tadp.Usuario(tipo, nombreUsuario, contrasenia) VALUES ('POSTULANTE', 'test', 'test');
+INSERT INTO tadp.usuario(tipo, nombre_usuario, contrasenia) VALUES ('POSTULANTE', 'test', 'test');
 
--- fetch 
-SELECT * FROM tadp.Usuario;
+INSERT INTO tadp.turno_examen(id_usuario, fecha) VALUES (1, current_timestamp);
+
+INSERT INTO tadp.turno_revision(id_usuario, fecha) VALUES (1, current_timestamp);
+
+-- # After Changes Check 
+SELECT * FROM tadp.usuario;
