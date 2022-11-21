@@ -11,3 +11,6 @@
 1. CREATE USER admin WITH ENCRYPTED PASSWORD 'test1234';
 2. CREATE DATABASE tadp;
 3. GRANT ALL PRIVILEGES ON DATABASE tadp TO admin;
+
+# Últimos Paso
+- \q

@@ -77,11 +77,25 @@ CREATE TABLE tadp.clave (
   es_valida BOOLEAN NOT NULL DEFAULT true
 );
 
+CREATE TABLE tadp.examen (
+  id_examen INT GENERATED ALWAYS AS IDENTITY,
+  id_usuario INT NOT NULL,
+  id_clave INT NOT NULL,
+  fecha BOOLEAN,
+  duracion INT,
+  realizado BOOLEAN NOT NULL DEFAULT false
+);
+
 -- # PK
 ALTER TABLE tadp.usuario ADD PRIMARY KEY (id_usuario);
 ALTER TABLE tadp.turno_examen ADD PRIMARY KEY (id_turno_examen);
 ALTER TABLE tadp.turno_revision ADD PRIMARY KEY (id_turno_revision);
 ALTER TABLE tadp.clave ADD PRIMARY KEY (id_clave);
+ALTER TABLE tadp.examen ADD PRIMARY KEY (id_examen);
+ALTER TABLE tadp.pregunta ADD PRIMARY KEY (id_pregunta);
+ALTER TABLE tadp.opcion ADD PRIMARY KEY (id_opcion);
+ALTER TABLE tadp.pregunta_opcion ADD PRIMARY KEY (id_pregunta, id_opcion);
+ALTER TABLE tadp.respuesta ADD PRIMARY KEY (id_examen, id_pregunta, id_opcion);
 
 -- # FK Constraint
 
@@ -95,6 +109,41 @@ ADD CONSTRAINT fk_turno_revision_usuario
 FOREIGN KEY (id_usuario) 
 REFERENCES tadp.usuario (id_usuario);
 
+ALTER TABLE tadp.examen
+ADD CONSTRAINT fk_examen_usuario
+FOREIGN KEY (id_usuario) 
+REFERENCES tadp.usuario (id_usuario);
+
+ALTER TABLE tadp.examen
+ADD CONSTRAINT fk_examen_clave
+FOREIGN KEY (id_clave) 
+REFERENCES tadp.clave (id_clave);
+
+ALTER TABLE tadp.pregunta_opcion
+ADD CONSTRAINT fk_pregunta_opcion_pregunta
+FOREIGN KEY (id_pregunta) 
+REFERENCES tadp.pregunta(id_pregunta);
+
+ALTER TABLE tadp.pregunta_opcion
+ADD CONSTRAINT fk_pregunta_opcion_opcion
+FOREIGN KEY (id_opcion) 
+REFERENCES tadp.opcion (id_opcion);
+
+ALTER TABLE tadp.respuesta
+ADD CONSTRAINT fk_respuesta_examen
+FOREIGN KEY (id_examen) 
+REFERENCES tadp.examen (id_examen);
+
+ALTER TABLE tadp.respuesta
+ADD CONSTRAINT fk_respuesta_pregunta
+FOREIGN KEY (id_pregunta) 
+REFERENCES tadp.pregunta_opcion (id_pregunta);
+
+ALTER TABLE tadp.respuesta
+ADD CONSTRAINT fk_respuesta_opcion
+FOREIGN KEY (id_opcion) 
+REFERENCES tadp.pregunta_opcion (id_opcion);
+
 -- # Insert Test Values
 INSERT INTO tadp.usuario(tipo, nombre_usuario, contrasenia) VALUES ('POSTULANTE', 'test', 'test');
 
@@ -102,7 +151,7 @@ INSERT INTO tadp.turno_examen(id_usuario, fecha) VALUES (1, current_timestamp);
 
 INSERT INTO tadp.turno_revision(id_usuario, fecha) VALUES (1, current_timestamp);
 
-INSERT INTO tadp.clave(id_usuario, fecha) VALUES (1, current_timestamp);
+INSERT INTO tadp.clave(valor) VALUES ('test');
 
 -- # After Changes Check 
 SELECT * FROM tadp.usuario;
