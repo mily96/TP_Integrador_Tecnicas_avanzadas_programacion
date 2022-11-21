@@ -210,4 +210,7 @@ INSERT INTO tadp.turno_revision(id_turno_revision, id_usuario, fecha) VALUES (1,
 INSERT INTO tadp.clave(id_clave, valor) VALUES (1, 'test');
 
 -- # After Changes Check 
-SELECT * FROM tadp.usuario;
+select * from tadp.usuario;
+select * from tadp.turno_examen;
+select * from tadp.turno_revision;
+select * from tadp.clave;
