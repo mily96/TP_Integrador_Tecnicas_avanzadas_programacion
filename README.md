@@ -116,6 +116,10 @@ pip install -Iv coverage==6.5.0
 ```
 pip install -Iv drf-yasg==1.21.4
 ```
+- [psycopg2](https://pypi.org/project/psycopg2/)
+```
+pip install -Iv psycopg2==2.9.5
+```
 
 ### pip comandos
 - Instalar paquetes de requirements.txt:
@@ -145,6 +149,13 @@ psql -U postgres
 
 ### pgAdmin4
 - Master Password: test1234
+
+### Verificar Conexión con DB
+- Revisar configuración en settings.py
+- Ejecutar el siguiente comando:
+```
+python manage.py dbshell
+```
 
 # :telescope: Probar API <a name = "test_api"></a>
 - Elegimos utilizar [Insomnia](https://github.com/Kong/insomnia) para probar nuestra API.
@@ -196,6 +207,26 @@ cd tadp_api
 - Recomendamos utilizar:
     - User: admin 
     - Pass: test1234
+
+## Generar Modelo de Postgresql
+```
+python manage.py inspectdb > models.py
+```
+
+## Hacer que Django Maneje las Migrations
+```
+class Meta:
+    managed = False # remove this line
+    db_table = 'example_table_name'
+```
+
+## Crear Migrations iniciales para tablas existentes
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate --fake-initial
+```
 
 # :speech_balloon: Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
