@@ -28,7 +28,7 @@ tadp-venv\Scripts\activate
 cd tadp_api
 python manage.py runserver
 ```
-4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/api/v1/questions/)
+4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/swagger/)
 
 - En caso de que ya estemos utilizando otro ambiente de python podemos correr el siguiente comando para desactivarlo:
 ```
