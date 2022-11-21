@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^b8mx)#dja#pe(+0b@2josh@n904=+*qo^jonzv_@mda&-79+u'
+SECRET_KEY = 'django-insecure-l9j#f)-qi_gm%8!&38de1=rl1_4astdk6is_h%)a@dtn#vxifs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,11 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', # required for serving swagger ui's css/js files
-    'drf_yasg',
+    'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'trivia',
+    'exam',
 ]
 
 MIDDLEWARE = [
@@ -80,11 +79,14 @@ WSGI_APPLICATION = 'tadp_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tadp', # mydatabase
-        'USER': 'postgres', # mydatabaseuser
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=tadp,public'
+        },
+        'NAME': 'tadp',
+        'USER': 'postgres',
         'PASSWORD': 'test1234',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
