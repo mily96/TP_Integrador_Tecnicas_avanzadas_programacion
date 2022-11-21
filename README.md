@@ -214,6 +214,7 @@ python manage.py inspectdb > models.py
 ```
 
 ## Hacer que Django Maneje las Migrations
+- En el model.py generado:
 ```
 class Meta:
     managed = False # remove this line
