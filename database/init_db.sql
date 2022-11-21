@@ -138,7 +138,7 @@ CREATE TABLE tadp.opcion (
 CREATE TABLE tadp.pregunta_opcion (
   id_pregunta INT NOT NULL,
   id_opcion INT NOT NULL,
-  opcion_correcta BOOLEAN NOT NULL
+  opcion_correcta BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE tadp.respuesta (
@@ -201,16 +201,112 @@ FOREIGN KEY (id_pregunta, id_opcion)
 REFERENCES tadp.pregunta_opcion (id_pregunta, id_opcion);
 
 -- # Insert Test Values
-INSERT INTO tadp.usuario(id_usuario, tipo, nombre_usuario, contrasenia) VALUES (1, 'POSTULANTE', 'test', 'test');
+INSERT INTO tadp.usuario(id_usuario, tipo, nombre_usuario, contrasenia) VALUES (1, 'ADMINISTRADOR', 'admin', 'admin');
+INSERT INTO tadp.usuario(id_usuario, tipo, nombre_usuario, contrasenia) VALUES (2, 'POSTULANTE', 'test', 'test');
 
-INSERT INTO tadp.turno_examen(id_turno_examen, id_usuario, fecha) VALUES (1, 1, current_timestamp);
+INSERT INTO tadp.turno_examen(id_turno_examen, id_usuario, fecha) VALUES (1, 2, current_timestamp);
 
-INSERT INTO tadp.turno_revision(id_turno_revision, id_usuario, fecha) VALUES (1, 1, current_timestamp);
+INSERT INTO tadp.turno_revision(id_turno_revision, id_usuario, fecha) VALUES (1, 2, current_timestamp);
 
 INSERT INTO tadp.clave(id_clave, valor) VALUES (1, 'test');
+
+INSERT INTO tadp.examen(id_examen, id_usuario, id_clave, fecha, duracion, realizado) VALUES (1, 2, 1, current_timestamp, 20, true);
+
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (1, 'La Organización Mundial de la Salud manifiesta que el riesgo en la vía pública surge como
+resultado de diversos factores, ¿cuáles son?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (2, '¿A qué factor se deben la mayoría de los siniestros viales?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (3, 'A fin de aumentar la propia seguridad y la de los demás, ¿a qué se debería poner atención
+durante la circulación?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (4, 'El factor ambiental es el principal factor de riesgo ya que las colisiones, en su mayoría, se
+deben a las condiciones meteorológicas o del camino');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (5, 'Por lo general, las fallas mecánicas se deben a conductas negligentes por parte de los propietarios de los vehículos, que no se ocupan de la verificación del estado de su automóvil');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (6, '¿A qué se denomina incidente de tránsito o incidente vial?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (7, '"Cada usuario de la vía pública es responsable de una parte del tránsito." ¿Es correcta ésta
+premisa?"');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (8, '"Como usuarios de la vía pública estamos obligados a no entorpecer injustificadamente la circulación y a no causar peligro, perjuicios o molestias innecesarias a las personas o
+daños a los bienes." ¿Es correcta esta premisa?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (9, 'Además de provocar víctimas fatales o lesionados graves, ¿qué otras consecuencias puede
+generar un siniestro de tránsito?');
+INSERT INTO tadp.pregunta(id_pregunta, descripcion) VALUES (10, '¿Cuáles son los dos principios básicos de todo sistema de tránsito en el mundo?');
+
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (1, 'Verdadero');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (2, 'Falso');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (3, 'Todas las opciones son correctas');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (4, 'Ninguna de las opciones son correctas');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (5, 'Vehicular y Ambiental');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (6, 'Humano y Vehicular');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (7, 'Humano, Vehicular y Ambiental');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (8, 'Al humano');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (9, 'Al vehicular');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (10, 'Al ambiental');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (11, 'Al estado del pavimento y al clima, en especial');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (12, 'A las condiciones en que se encuentran: el automóvil, la infraestructura vial, las condiciones climáticas y el conductor');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (13, 'Hecho que puede ser evitado, en el cual se produce daño a persona o cosa, en ocasión
+de circulación en la vía pública');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (14, 'Hecho impredecible e inevitable en ocasión de circulación en la vía pública');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (15, 'Hecho, evitable o no, que involucra daños a terceros');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (16, 'No, porque los que tienen responsabilidad son aquellos que conducen cualquier tipo de
+vehículo');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (17, 'No, la responsabilidad la asumen aquellos que obtienen una licencia de conducir');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (18, 'Sí, porque se está obligado a no causar peligro ni entorpecer la circulación');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (19, 'Sí, independientemente del tipo de movilidad elegido');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (20, 'No, los peatones son usuarios de la vía pública y no están obligados');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (21, 'Sí pero sólo si estamos conduciendo un vehículo');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (22, 'Daños materiales, costos sanitarios y administrativos');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (23, 'Daños materiales y costos sanitarios');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (24, 'Sólo daños materiales');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (25, 'Velocidad y confort');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (26, 'Fluidez y seguridad');
+INSERT INTO tadp.opcion(id_opcion, descripcion) VALUES (27, 'Comodidad y agilidad');
+
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (1, 5, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (1, 6, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (1, 7, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (2, 8, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (2, 9, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (2, 10, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (3, 11, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (3, 12, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (3, 4, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (4, 1, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (4, 2, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (5, 1, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (5, 2, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (6, 13, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (6, 14, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (6, 15, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (7, 16, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (7, 17, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (7, 18, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (8, 19, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (8, 20, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (8, 21, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (9, 22, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (9, 23, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (9, 24, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (10, 25, false);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (10, 26, true);
+INSERT INTO tadp.pregunta_opcion(id_pregunta, id_opcion, opcion_correcta) VALUES (10, 27, false);
+
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 1, 5);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 2, 8);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 3, 12);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 4, 2);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 5, 1);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 6, 13);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 7, 18);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 8, 19);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 9, 22);
+INSERT INTO tadp.respuesta(id_examen, id_pregunta, id_opcion) VALUES (1, 10, 26);
+
 
 -- # After Changes Check 
 select * from tadp.usuario;
 select * from tadp.turno_examen;
 select * from tadp.turno_revision;
 select * from tadp.clave;
+select * from tadp.examen;
+select * from tadp.pregunta;
+select * from tadp.opcion;
+select * from tadp.pregunta_opcion;
+select * from tadp.respuesta;
