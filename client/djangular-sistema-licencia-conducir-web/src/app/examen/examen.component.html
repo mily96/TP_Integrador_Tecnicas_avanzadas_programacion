@@ -4,26 +4,26 @@
         <h3 class="score">Score: {{ correctAnswers }}/{{ questionNumber }}</h3>
       </div>
     <ng-container *ngIf="question; else quizComplete">
-      <p><b>{{ question.category }}</b></p>
-      <label id="question-radio-group-label" [innerHTML]="question.question"></label>
+      <p><b>{{ question.descripcion }}</b></p>
+      <!-- <label id="question-radio-group-label" [innerHTML]="question.question"></label>
       <mat-radio-group
         aria-labelledby="question-radio-group-label"
         class="question-radio-group"
         [disabled]="disableRadioButtons"
-        [(ngModel)]="answer">
-        <mat-radio-button class="question-radio-button" *ngFor="let answer of question.answers" [value]="answer" (change)="answerSelected($event)">
+        [(ngModel)]="option">
+        <mat-radio-button class="question-radio-button" *ngFor="let option of question.answers" [value]="answer" (change)="answerSelected($event)">
           {{answer.answer}}
         </mat-radio-button>
       </mat-radio-group>
   
-      <div *ngIf="answer">
-        <div *ngIf="answer.is_correct; else incorrect">
-          <p>Correct!</p>
+      <div *ngIf="option">
+        <div *ngIf="option.opcion_correcta; else incorrect">
+          <p>Correcto!</p>
         </div>
         <ng-template #incorrect>
-          <p>Wrong! The correct answer is {{ getCorrectAnswer() }}</p>
+          <p>Incorrecto! La opción correcta es {{ getCorrectOption() }}</p>
         </ng-template>
-      </div>
+      </div> -->
     </ng-container>
     <button mat-flat-button color="primary" id="next-button" [disabled]="disableNextButton" (click)="getNextQuestion()">Next Question</button>
     <ng-template #quizComplete>
