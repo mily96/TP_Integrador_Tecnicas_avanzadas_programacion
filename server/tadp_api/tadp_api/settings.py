@@ -80,9 +80,6 @@ WSGI_APPLICATION = 'tadp_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'options': '-c search_path=tadp,public'
-        },
         'NAME': 'tadp',
         'USER': 'postgres',
         'PASSWORD': 'test1234',
@@ -90,6 +87,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+# By default it uses the public schema from a postgresql
+# For more info on how to change it: https://stackoverflow.com/questions/1160598/how-to-use-schemas-in-django
 
 
 # Password validation
