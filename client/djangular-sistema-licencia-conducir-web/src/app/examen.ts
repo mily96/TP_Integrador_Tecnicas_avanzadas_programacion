@@ -1,3 +1,4 @@
+
 export interface Answer {
     answer: string,
     is_correct: boolean;
@@ -12,3 +13,5 @@ export interface Answer {
   }
   
   export interface QuestionArray extends Array<Question> { }
+
+  
