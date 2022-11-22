@@ -19,13 +19,30 @@
 
 # :wrench: Levantar Proyecto <a name = "run_project"></a>
 
+## Database
+1. Abrir el pgAdmin
+2. Crear una usuario con nombre y contraseña tal cuál sección "Postgresql" -> "Login"
+3. Ver archivo database/create_new_db_user.md
+4. Crear una DB con el nombre que aparece en server\tadp_api\tadp_api\settings.py
+5. Ingresar a pgAdmin y abrir la db recién creada
+6. Correr el script database/init_db.sql
+
 ## Server
 1. Ver "Instalar paquetes de requirements.txt" en este mismo archivo.
 2. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-3. Navegar hasta nuestra carpeta de servidor y correr los siguientes comandos:
+3. Navegar hasta nuestra carpeta de servidor
+4. Activar el ambiente local
 ```
 tadp-venv\Scripts\activate
+```
+5. Una vez configurada la base de datos, correr los siguienetes commandos:
+```
 cd tadp_api
+python manage.py migrate
+python manage.py migrate --fake-initial
+```
+6. Levantar el servidor:
+```
 python manage.py runserver
 ```
 4. Navegar a alguna de las rutas definidas en nuestro urls.py (Ej: http://127.0.0.1:8000/swagger/)
@@ -198,11 +215,11 @@ cd tadp_api
 ```
 3. 
 ```
-./manage.py migrate
+python ./manage.py migrate
 ```
 4. 
 ```
-./manage.py createsuperuser
+python ./manage.py createsuperuser
 ```
 - Recomendamos utilizar:
     - User: admin 
@@ -228,6 +245,11 @@ python manage.py makemigrations
 ```
 python manage.py migrate --fake-initial
 ```
+
+## Hacer un reset de la password del usuario postgres
+Seguir las siguientes dos guías:
+- https://confluence.atlassian.com/confkb/how-to-change-the-postgresql-administrator-password-693900817.html
+- https://stackoverflow.com/a/64290055
 
 # :speech_balloon: Autores <a name = "authors"></a>
 - [@mily96](https://github.com/mily96)
