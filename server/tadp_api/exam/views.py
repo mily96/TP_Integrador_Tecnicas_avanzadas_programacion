@@ -1,7 +1,34 @@
 from django.shortcuts import render
-from .models import Pregunta
+from .models import (Opcion, Pregunta)
 from rest_framework import generics
-from .serializers import PreguntaSerializer
+from .serializers import (OpcionSerializer, PreguntaSerializer)
+
+# Opcion Views
+
+class OpcionCreate(generics.CreateAPIView):
+    # API endpoint that allows creation of a new Opcion
+    queryset = Opcion.objects.all(),
+    serializer_class = OpcionSerializer
+
+class OpcionList(generics.ListAPIView):
+    # API endpoint that allows Opcion to be viewed.
+    queryset = Opcion.objects.all()
+    serializer_class = OpcionSerializer
+
+class OpcionDetail(generics.RetrieveAPIView):
+    # API endpoint that returns a single Opcion by pk.
+    queryset = Opcion.objects.all()
+    serializer_class = OpcionSerializer
+    
+class OpcionUpdate(generics.RetrieveUpdateAPIView):
+    # API endpoint that allows a Opcion record to be updated.
+    queryset = Opcion.objects.all()
+    serializer_class = OpcionSerializer
+    
+class OpcionDelete(generics.RetrieveDestroyAPIView):
+    # API endpoint that allows a Opcion record to be deleted.
+    queryset = Opcion.objects.all()
+    serializer_class = OpcionSerializer
 
 # Pregunta Views
 
