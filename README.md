@@ -121,9 +121,9 @@ pip install -Iv requests==2.28.1
 ```
 pip install -Iv SQLAlchemy==1.4.42
 ```
-- [pytest](https://pypi.org/project/pytest/)
+- [pytest-cov](https://pypi.org/project/pytest-cov/)
 ```
-pip install -Iv pytest==7.1.3
+pip install pytest-cov
 ```
 - [coverage](https://pypi.org/project/coverage/)
 ```
@@ -203,6 +203,18 @@ insomnia/tp_integrador_test_api.json
 ```
 insomnia/tp_integrador_test_api.json
 ```
+
+## Unit tests y coverage
+Se encuentran ubicados en:
+- **tests/test_examen.py**
+- **tests/test_pregunta.py**
+- **tests/test_usuario.py**
+
+Los pasos para ejecutar dichos test y analizar su cobertura son:
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta tadp_api dentro de server y ejecutar el siguiente comando: **pytest --cov=tests**
+3. Allí indicará el resultado de la ejecución junto con el porcentaje de coverage
+
 
 # :question: Otros Comentarios <a name = "comments"></a>
 

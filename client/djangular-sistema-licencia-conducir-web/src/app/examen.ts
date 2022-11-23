@@ -14,5 +14,3 @@ export interface Pregunta {
 }
 
 export interface PreguntaArray extends Array<Pregunta> { }
-
-  
