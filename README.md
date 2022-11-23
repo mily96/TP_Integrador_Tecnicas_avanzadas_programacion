@@ -10,6 +10,7 @@
 - [Levantar Proyecto](#run_project)
 - [Herramientas Utilizadas](#built_using)
 - [Probar API](#api_testing)
+- [Tests Unitarios y Coverage](#testing)
 - [Otros Comentarios](#comments)
 - [Autores](#authors)
 - [Reconocimientos](#acknowledgement)
@@ -137,6 +138,10 @@ pip install -Iv drf-yasg==1.21.4
 ```
 pip install -Iv psycopg2==2.9.5
 ```
+- [pytest-django](https://pypi.org/project/pytest-django/)
+```
+pip install -Iv pytest-django==4.5.2
+```
 
 ### pip comandos
 - Instalar paquetes de requirements.txt:
@@ -203,6 +208,64 @@ insomnia/tp_integrador_test_api.json
 ```
 insomnia/tp_integrador_test_api.json
 ```
+
+# :crystal_ball: Tests Unitarios y Coverage <a name = "testing"></a>
+## Server - Unit tests
+- Se encuentran ubicados en el directorio: **server\tadp_api\tests**
+
+Los pasos para ejecutar dichos test son:
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta **server/tadp_api/**
+3. Ejecutar el siguiente comando:
+```
+pytest
+```
+o
+```
+pytest [directorio]
+```
+4. Allí indicará el resultado de la ejecución
+
+## Server - Coverage
+
+Los pasos para ejecutar el coverage son:
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta **server/tadp_api/**
+3. Ejecutar el siguiente comando: 
+```
+coverage run -m pytest
+```
+4. Luego ejecutamos el siguiente comando para ver el coverage en la terminal:
+```
+coverage report
+```
+o el siguiente comando para ver el reporte en formato html
+```
+coverage html
+```
+el cual se generará en server\tadp_api\htmlcov
+
+## Client - Unit tests
+Los pasos para ejecutar los test del proyecto Angular son:
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta **client/djangular-sistema-licencia-conducir-web/**
+3. Ejecutar el siguiente comando:
+```
+npm run test
+```
+4. Allí indicará el resultado de la ejecución
+
+## Client - Coverage
+
+Los pasos para ejecutar el coverage del proyecto Angular son:
+Los pasos para ejecutar los test del proyecto Angular son:
+1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
+2. Dirigirse a la carpeta **client/djangular-sistema-licencia-conducir-web/**
+3. Ejecutar el siguiente comando:
+```
+npm run test:coverage
+```
+4. Veremos un resumen del coverage y los resultados se guardaran en el repositorio: **client\djangular-sistema-licencia-conducir-web\coverage**
 
 # :question: Otros Comentarios <a name = "comments"></a>
 
