@@ -99,3 +99,21 @@ class RespuestaSerializer(serializers.ModelSerializer):
             'id_pregunta',
             'id_opcion'
         ]
+
+# Custom Serializers
+class PreguntasDetailSerializer(serializers.ModelSerializer):
+    id_pregunta = PreguntaSerializer(required=True)
+    id_opcion = OpcionSerializer(required=True)
+
+    class Meta:
+        model = PreguntaOpcion
+        fields = ('id_pregunta', 'id_opcion', 'opcion_correcta')
+
+    def create(self, validated_data):
+        pregunta_data = validated_data.pop('id_pregunta')
+        opcion_data = validated_data.pop('id_opcion')
+        pregunta = PreguntaSerializer.create(PreguntaSerializer(), validated_data=pregunta_data)
+        opcion = OpcionSerializer.create(OpcionSerializer(), validated_data=opcion_data)
+        pregunta_detail = PreguntaOpcion.objects.update_or_create(id_pregunta=pregunta,id_opcion=opcion,
+                            opcion_correcta=validated_data.pop('opcion_correcta'))
+        return pregunta_detail

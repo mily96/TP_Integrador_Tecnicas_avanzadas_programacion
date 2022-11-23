@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExamenService } from "../examen.service";
-import { Pregunta, PreguntaArray, Opcion} from "../examen";
+import { ExamenService } from "./services/examen.service";
+import { Pregunta, PreguntaDetailArray, Opcion, OpcionDetailArray, OpcionDetail, PreguntaDetail} from "./models/examen";
 import { MatRadioChange } from "@angular/material/radio";
 
 @Component({
@@ -9,12 +9,13 @@ import { MatRadioChange } from "@angular/material/radio";
   styleUrls: ['./examen.component.scss']
 })
 export class ExamenComponent implements OnInit {
-  examenData: PreguntaArray = [];
+  examenData: PreguntaDetailArray = [];
   question: Pregunta|null = null;
-  option: Opcion|null = null;
+  option: OpcionDetail|null = null;
+  options: OpcionDetailArray = [];
   disableRadioButtons: boolean = false;
   disableNextButton: boolean = true;
-  questionNumber: number = 0;
+  questionNumber: number = 1;
   correctAnswers: number = 0;
   constructor(private examenService: ExamenService) { }
 
@@ -25,7 +26,14 @@ export class ExamenComponent implements OnInit {
   getExamen() {
     this.examenService.getExamen().subscribe({
         next: (data) => {
-          this.examenData = data;
+          this.examenData = data.map((x: any) => {
+            const preguntaDetail: PreguntaDetail = {
+              pregunta: x.id_pregunta,
+              opcion: x.id_opcion,
+              opcion_correcta: x.opcion_correcta
+            };
+            return preguntaDetail;
+          });
           this.getNextQuestion();
         },
         error: (error) => {
@@ -36,15 +44,37 @@ export class ExamenComponent implements OnInit {
   }
 
   getNextQuestion() {
+    this.options = [];
     if (this.examenData.length) {
       const index = Math.floor(Math.random() * this.examenData.length);
-      this.question = this.examenData[index];
-      this.examenData.splice(index, 1);
+      this.question = this.examenData[index].pregunta;
     } else {
       this.question = null;
     }
+    if (this.question) {
+      this.examenData.forEach(preguntaDetail => {
+        if (preguntaDetail.pregunta.id_pregunta == this.question?.id_pregunta) {
+          const optionDetail: OpcionDetail = {
+            id_opcion: preguntaDetail.opcion.id_opcion,
+            descripcion: preguntaDetail.opcion.descripcion,
+            opcion_correcta: preguntaDetail.opcion_correcta
+          };
+          this.options?.push(optionDetail)
+        }
+      });
+      console.log(this.options);
+      const examDataWithoutQuestion: PreguntaDetailArray = [];
+      this.examenData.forEach(preguntaDetail => {
+        if (preguntaDetail.pregunta.id_pregunta != this.question?.id_pregunta) {
+          examDataWithoutQuestion.push(preguntaDetail);
+        }
+      });
+      this.examenData = examDataWithoutQuestion;
+    }
     if (this.option) {
-      this.questionNumber++;
+      if (this.questionNumber < 10) {
+        this.questionNumber++;
+      }
       if (this.option.opcion_correcta) {
         this.correctAnswers++;
       }
@@ -55,11 +85,15 @@ export class ExamenComponent implements OnInit {
   }
 
   getCorrectOption() {
+    let opcion_correcta = '';
     if (this.question) {
-      return '';
-      //return this.question.answers.filter(answer => answer.is_correct)[0].answer;
+      this.options.forEach(option => {
+        if (option.opcion_correcta) {
+          opcion_correcta = option.descripcion;
+        }
+      });
     }
-    return '';
+    return opcion_correcta;
   }
 
   optionSelected(event: MatRadioChange) {

@@ -1,3 +1,4 @@
+from rest_framework import routers
 from django.urls import include, path
 from .views import (
     ClaveCreate,
@@ -37,6 +38,14 @@ from .views import (
     UsuarioDetail,
     UsuarioUpdate
 )
+from .views import (
+  PreguntasDetailViewSet
+)
+
+
+
+router = routers.DefaultRouter()
+router.register(r'preguntas-detail', PreguntasDetailViewSet)
 
 urlpatterns = [
     path('clave/create/', ClaveCreate.as_view(), name='create-clave'),
@@ -84,4 +93,5 @@ urlpatterns = [
     path('usuario/<int:pk>/', UsuarioDetail.as_view(), name='retrieve-usuario'),
     path('usuario/update/<int:pk>/', UsuarioUpdate.as_view(), name='update-usuario'),
     # path('usuario/delete/<int:pk>/', UsuarioDelete.as_view(), name='delete-usuario'),
+    path('', include(router.urls))
 ]

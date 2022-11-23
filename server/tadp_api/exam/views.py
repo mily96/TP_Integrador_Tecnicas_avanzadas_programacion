@@ -10,9 +10,10 @@ from .models import (
     TurnoRevision,
     Usuario
 )
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from .serializers import (
     OpcionSerializer,
+    PreguntasDetailSerializer,
     PreguntaSerializer,
     UsuarioSerializer,
     ClaveSerializer,
@@ -265,3 +266,9 @@ class RespuestaDelete(generics.RetrieveDestroyAPIView):
     # API endpoint that allows a Respuesta record to be deleted.
     queryset = Respuesta.objects.all()
     serializer_class = RespuestaSerializer
+    
+    
+# Custom Views
+class PreguntasDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = PreguntaOpcion.objects.all()
+    serializer_class = PreguntasDetailSerializer

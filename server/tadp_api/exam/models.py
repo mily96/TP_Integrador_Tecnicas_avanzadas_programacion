@@ -57,8 +57,8 @@ class Pregunta(models.Model):
 
 
 class PreguntaOpcion(models.Model):
-    id_pregunta = models.OneToOneField(Pregunta, models.DO_NOTHING, db_column='id_pregunta', primary_key=True)
-    id_opcion = models.ForeignKey(Opcion, models.DO_NOTHING, db_column='id_opcion')
+    id_pregunta = models.OneToOneField(Pregunta, models.DO_NOTHING, db_column='id_pregunta', related_name="pregunta", primary_key=True)
+    id_opcion = models.ForeignKey(Opcion, models.DO_NOTHING, db_column='id_opcion', related_name="opcion")
     opcion_correcta = models.BooleanField()
 
     class Meta:
