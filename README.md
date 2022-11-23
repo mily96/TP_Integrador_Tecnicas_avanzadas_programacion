@@ -211,14 +211,11 @@ insomnia/tp_integrador_test_api.json
 
 # :crystal_ball: Tests Unitarios y Coverage <a name = "testing"></a>
 ## Server - Unit tests
-Se encuentran ubicados en:
-```
-**tests/**
-```
+- Se encuentran ubicados en el directorio: **server\tadp_api\tests**
 
 Los pasos para ejecutar dichos test son:
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-2. Dirigirse a la carpeta server/tadp_api/
+2. Dirigirse a la carpeta **server/tadp_api/**
 3. Ejecutar el siguiente comando:
 ```
 pytest
@@ -233,7 +230,7 @@ pytest [directorio]
 
 Los pasos para ejecutar el coverage son:
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-2. Dirigirse a la carpeta server/tadp_api/
+2. Dirigirse a la carpeta **server/tadp_api/**
 3. Ejecutar el siguiente comando: 
 ```
 coverage run -m pytest
@@ -246,43 +243,29 @@ o el siguiente comando para ver el reporte en formato html
 ```
 coverage html
 ```
+el cual se generará en server\tadp_api\htmlcov
 
 ## Client - Unit tests
-Se encuentran ubicados en:
-```
-**tests/**
-```
-
-Los pasos para ejecutar dichos test son:
+Los pasos para ejecutar los test del proyecto Angular son:
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-2. Dirigirse a la carpeta server/tadp_api/
+2. Dirigirse a la carpeta **client/djangular-sistema-licencia-conducir-web/**
 3. Ejecutar el siguiente comando:
 ```
-pytest
-```
-o
-```
-pytest [directorio]
+npm run test
 ```
 4. Allí indicará el resultado de la ejecución
 
 ## Client - Coverage
 
-Los pasos para ejecutar el coverage son:
+Los pasos para ejecutar el coverage del proyecto Angular son:
+Los pasos para ejecutar los test del proyecto Angular son:
 1. Levantar una terminal (cmd, powershell, etc.) en modo administrador
-2. Dirigirse a la carpeta server/tadp_api/
-3. Ejecutar el siguiente comando: 
+2. Dirigirse a la carpeta **client/djangular-sistema-licencia-conducir-web/**
+3. Ejecutar el siguiente comando:
 ```
-coverage run -m pytest
+npm run test:coverage
 ```
-4. Luego ejecutamos el siguiente comando para ver el coverage en la terminal:
-```
-coverage report
-```
-o el siguiente comando para ver el reporte en formato html
-```
-coverage html
-```
+4. Veremos un resumen del coverage y los resultados se guardaran en el repositorio: **client\djangular-sistema-licencia-conducir-web\coverage**
 
 # :question: Otros Comentarios <a name = "comments"></a>
 
