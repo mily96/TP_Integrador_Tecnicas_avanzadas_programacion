@@ -99,3 +99,13 @@ class RespuestaSerializer(serializers.ModelSerializer):
             'id_pregunta',
             'id_opcion'
         ]
+
+# Custom Serializers
+
+class PreguntaDetailSerializer(serializers.ModelSerializer):
+    pregunta = PreguntaSerializer(many=False, read_only=True)
+    opcion = OpcionSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = PreguntaOpcion
+        fields = ('pregunta', 'opcion', 'opcion_correcta')
