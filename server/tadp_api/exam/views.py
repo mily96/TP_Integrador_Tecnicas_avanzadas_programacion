@@ -13,7 +13,7 @@ from .models import (
 from rest_framework import generics, viewsets
 from .serializers import (
     OpcionSerializer,
-    PreguntaDetailSerializer,
+    PreguntasDetailSerializer,
     PreguntaSerializer,
     UsuarioSerializer,
     ClaveSerializer,
@@ -269,6 +269,6 @@ class RespuestaDelete(generics.RetrieveDestroyAPIView):
     
     
 # Custom Views
-class PreguntaDetailViewSet(viewsets.ReadOnlyModelViewSet):
+class PreguntasDetailViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = PreguntaOpcion.objects.all()
-    serializer_class = PreguntaDetailSerializer
+    serializer_class = PreguntasDetailSerializer

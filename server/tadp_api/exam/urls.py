@@ -39,13 +39,13 @@ from .views import (
     UsuarioUpdate
 )
 from .views import (
-  PreguntaDetailViewSet
+  PreguntasDetailViewSet
 )
 
 
 
 router = routers.DefaultRouter()
-router.register(r'pregunta-detail', PreguntaDetailViewSet)
+router.register(r'preguntas-detail', PreguntasDetailViewSet)
 
 urlpatterns = [
     path('clave/create/', ClaveCreate.as_view(), name='create-clave'),
@@ -93,5 +93,5 @@ urlpatterns = [
     path('usuario/<int:pk>/', UsuarioDetail.as_view(), name='retrieve-usuario'),
     path('usuario/update/<int:pk>/', UsuarioUpdate.as_view(), name='update-usuario'),
     # path('usuario/delete/<int:pk>/', UsuarioDelete.as_view(), name='delete-usuario'),
-    path('viewset/', include(router.urls))
+    path('', include(router.urls))
 ]
